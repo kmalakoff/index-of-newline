@@ -31,12 +31,7 @@ describe("index-of-newline", function () {
     });
 
     it("invalid positive offset", function () {
-      assert.throws(() =>
-        indexOfNewline(
-          "some\r\nstring\ncombination\r",
-          "some\r\nstring\ncombination\r".length + 1
-        )
-      );
+      assert.throws(() => indexOfNewline("some\r\nstring\ncombination\r", "some\r\nstring\ncombination\r".length + 1));
     });
   });
 
@@ -47,18 +42,10 @@ describe("index-of-newline", function () {
       let [index, length] = indexOfNewline(string, 0, true) as number[];
       assert.equal(index, 4);
 
-      [index, length] = indexOfNewline(
-        string,
-        index + length,
-        true
-      ) as number[];
+      [index, length] = indexOfNewline(string, index + length, true) as number[];
       assert.equal(index, 12);
 
-      [index, length] = indexOfNewline(
-        string,
-        index + length,
-        true
-      ) as number[];
+      [index, length] = indexOfNewline(string, index + length, true) as number[];
       assert.equal(index, 24);
     });
 
@@ -83,11 +70,7 @@ describe("index-of-newline", function () {
       let [index, length] = indexOfNewline(string, 0, true) as number[];
       while (index >= 0) {
         results.push(index);
-        [index, length] = indexOfNewline(
-          string,
-          index + length,
-          true
-        ) as number[];
+        [index, length] = indexOfNewline(string, index + length, true) as number[];
       }
       assert.deepEqual(results, [4, 12, 24]);
     });
