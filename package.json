@@ -1,7 +1,7 @@
 {
   "name": "index-of-newline",
   "description": "Find indexOf CR, LF or CRLF",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": {
     "email": "kmalakoff@gmail.com",
     "name": "Kevin Malakoff",
