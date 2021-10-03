@@ -1,0 +1,99 @@
+{
+  "name": "index-of-newline",
+  "description": "Find indexOf CR, LF or CRLF",
+  "version": "0.0.0",
+  "author": {
+    "email": "kmalakoff@gmail.com",
+    "name": "Kevin Malakoff",
+    "url": "https://github.com/kmalakoff"
+  },
+  "license": "MIT",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rimraf dist && microbundle",
+    "deploy": "np",
+    "docs": "rimraf docs && typedoc --includeVersion --entryPointStrategy expand --out docs src/index.ts",
+    "format": "prettier --write .",
+    "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx",
+    "postdeploy": "gh-pages -d docs",
+    "predeploy": "npm run format && npm run lint && depcheck && sortpack",
+    "pretest": "allow-require-me add",
+    "test": "npm run test:node && npm run test:browser",
+    "test:browser": "karma start .config/karma.cjs \"test/**/*.test.*\"",
+    "test:ci": "npm run pretest && nvu engines npm run test:node && npm run test:browser",
+    "test:node": "mocha --config .config/mocharc.json \"test/exports/*.test.*\" && rimraf coverage && c8 --config .config/c8rc.json mocha --config .config/mocharc.json \"test/unit/*.test.*\"",
+    "version": "npm run docs && git add docs"
+  },
+  "homepage": "https://github.com/kmalakoff/index-of-newline#README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kmalakoff/index-of-newline.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kmalakoff/index-of-newline/issues"
+  },
+  "keywords": [
+    "batch",
+    "data",
+    "fetch",
+    "form",
+    "multipart",
+    "parts",
+    "typescript"
+  ],
+  "devDependencies": {
+    "@types/chai": "^4.2.22",
+    "@types/mocha": "^9.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.32.0",
+    "@typescript-eslint/parser": "^4.32.0",
+    "allow-require-me": "^1.0.0",
+    "c8": "^7.9.0",
+    "chai": "^4.3.4",
+    "depcheck": "^1.4.2",
+    "eslint": "7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-mocha": "^9.0.0",
+    "gh-pages": "^3.2.3",
+    "karma": "^6.3.4",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-mocha": "^2.0.1",
+    "karma-mocha-reporter": "^2.2.5",
+    "karma-sourcemap-loader": "^0.3.8",
+    "karma-webpack": "^5.0.0",
+    "microbundle": "^0.13.3",
+    "mocha": "^9.1.2",
+    "node-version-use": "^0.2.0",
+    "np": "^7.5.0",
+    "prettier": "^2.4.1",
+    "rimraf": "^3.0.2",
+    "sortpack": "^2.2.0",
+    "ts-loader": "^9.2.6",
+    "ts-node": "^10.2.1",
+    "typedoc": "^0.22.4",
+    "typedoc-plugin-rename-defaults": "^0.4.0",
+    "webpack": "^5.56.0"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./*": "./*"
+  },
+  "np": {
+    "testScript": "test:ci",
+    "yarn": false
+  },
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "unpkg": "./dist/index.umd.cjs"
+}
