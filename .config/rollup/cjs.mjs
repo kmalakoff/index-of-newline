@@ -1,4 +1,5 @@
 import externals from "rollup-plugin-node-externals";
+import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import { babel } from "@rollup/plugin-babel";
 import { terser } from "rollup-plugin-terser";
@@ -20,6 +21,7 @@ export default {
   ],
   plugins: [
     externals({ deps: true }),
+    resolve({ extensions }),
     commonjs(),
     babel({ babelHelpers: "bundled", include: ["src/**/*.ts"], extensions, exclude: "./node_modules/**" }),
     terser(),
