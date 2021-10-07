@@ -3,11 +3,27 @@ import indexOfNewline from "index-of-newline";
 
 describe("index-of-newline", function () {
   describe("no length", function () {
-    it("all values", function () {
+    it("all values CRLF", function () {
       const string = "some\r\nstring\ncombination\r";
 
       let index = indexOfNewline(string) as number;
       assert.equal(index, 4);
+
+      index = indexOfNewline(string, index + 2) as number;
+      assert.equal(index, 12);
+
+      index = indexOfNewline(string, index + 1) as number;
+      assert.equal(index, 24);
+    });
+
+    it("all values LFCR", function () {
+      const string = "some\n\rstring\ncombination\r";
+
+      let index = indexOfNewline(string) as number;
+      assert.equal(index, 4);
+
+      index = indexOfNewline(string, index + 1) as number;
+      assert.equal(index, 5);
 
       index = indexOfNewline(string, index + 2) as number;
       assert.equal(index, 12);
@@ -36,11 +52,27 @@ describe("index-of-newline", function () {
   });
 
   describe("includeLength", function () {
-    it("all values", function () {
+    it("all values CRLF", function () {
       const string = "some\r\nstring\ncombination\r";
 
       let [index, length] = indexOfNewline(string, 0, true) as number[];
       assert.equal(index, 4);
+
+      [index, length] = indexOfNewline(string, index + length, true) as number[];
+      assert.equal(index, 12);
+
+      [index, length] = indexOfNewline(string, index + length, true) as number[];
+      assert.equal(index, 24);
+    });
+
+    it("all values LFCR", function () {
+      const string = "some\n\rstring\ncombination\r";
+
+      let [index, length] = indexOfNewline(string, 0, true) as number[];
+      assert.equal(index, 4);
+
+      [index, length] = indexOfNewline(string, index + length, true) as number[];
+      assert.equal(index, 5);
 
       [index, length] = indexOfNewline(string, index + length, true) as number[];
       assert.equal(index, 12);
@@ -64,7 +96,7 @@ describe("index-of-newline", function () {
     });
 
     it("iterate", function () {
-      const string = "some\r\nstring\ncombination\r";
+      const string = "some\r\nstring\ncombination\rwith\rnend";
 
       const results = [];
       let [index, length] = indexOfNewline(string, 0, true) as number[];
@@ -72,7 +104,7 @@ describe("index-of-newline", function () {
         results.push(index);
         [index, length] = indexOfNewline(string, index + length, true) as number[];
       }
-      assert.deepEqual(results, [4, 12, 24]);
+      assert.deepEqual(results, [4, 12, 24, 29]);
     });
   });
 });
