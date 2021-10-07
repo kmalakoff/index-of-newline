@@ -1,7 +1,15 @@
-import path from "path";
-import { __dirname, presetEnv, config } from "./base.mjs";
+import externals from "rollup-plugin-node-externals";
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import { babel } from "@rollup/plugin-babel";
 
-export default config({
+import path from "path";
+import { fileURLToPath } from "url";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const extensions = [".js", ".ts"];
+
+export default {
+  input: path.resolve(__dirname, "..", "..", "src", "index.ts"),
   output: [
     {
       file: path.resolve(__dirname, "..", "..", "dist", "cjs", "index.js"),
@@ -10,5 +18,10 @@ export default config({
       exports: "auto",
     },
   ],
-  presets: [presetEnv({ node: "6" }, false)],
-});
+  plugins: [
+    externals({ deps: true }),
+    resolve({ extensions }),
+    commonjs(),
+    babel({ babelHelpers: "bundled", include: ["src/**/*.ts"], extensions, exclude: "./node_modules/**" }),
+  ],
+};
