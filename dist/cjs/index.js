@@ -1,2 +1,27 @@
-"use strict";module.exports=function(t,e=0,r=!1){if(e<0)throw new Error("Unexpected negative offset");if(e>t.length)throw new Error(`Offset is longer than the string. Offset: ${e}. String: ${t.length}`);for(;e<t.length;){const n=t[e];if("\n"===n)return r?[e,1]:e;if("\r"===n)return r?[e,"\n"===t[e+1]?2:1]:e;e++}return r?[-1,0]:-1};
+'use strict';
+
+/**
+ * Find indexOf CR, LF, or CRLF
+ *
+ * @param string The search string
+ * @param offset The offset for searching
+ * @param includeLength Include the length in the return value
+ * @returns When includeLength is true, returns a pair of [offset, length] to provide the length of CR (1), LF (1) or CRLF (2)
+ */
+function indexOfNewline(string, offset = 0, includeLength = false) {
+  if (offset < 0) throw new Error("Unexpected negative offset");
+  if (offset > string.length) throw new Error(`Offset is longer than the string. Offset: ${offset}. String: ${string.length}`);
+
+  while (offset < string.length) {
+    const value = string[offset];
+    if (value === "\n") return includeLength ? [offset, 1] : offset;else if (value === "\r") {
+      return includeLength ? [offset, string[offset + 1] === "\n" ? 2 : 1] : offset;
+    }
+    offset++;
+  }
+
+  return includeLength ? [-1, 0] : -1;
+}
+
+module.exports = indexOfNewline;
 //# sourceMappingURL=index.js.map
