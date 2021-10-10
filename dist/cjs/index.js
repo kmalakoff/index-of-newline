@@ -8,12 +8,14 @@
  * @param includeLength Include the length in the return value
  * @returns When includeLength is true, returns a pair of [offset, length] to provide the length of CR (1), LF (1) or CRLF (2)
  */
-function indexOfNewline(string, offset = 0, includeLength = false) {
+function indexOfNewline(string) {
+  var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var includeLength = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
   if (offset < 0) throw new Error("Unexpected negative offset");
-  if (offset > string.length) throw new Error(`Offset is longer than the string. Offset: ${offset}. String: ${string.length}`);
+  if (offset > string.length) throw new Error("Offset is longer than the string. Offset: ".concat(offset, ". String: ").concat(string.length));
 
   while (offset < string.length) {
-    const value = string[offset];
+    var value = string[offset];
     if (value === "\n") return includeLength ? [offset, 1] : offset;else if (value === "\r") {
       return includeLength ? [offset, string[offset + 1] === "\n" ? 2 : 1] : offset;
     }
