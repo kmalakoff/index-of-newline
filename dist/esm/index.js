@@ -6,7 +6,7 @@
  * @param includeLength Include the length in the return value
  * @returns When includeLength is true, returns a pair of [offset, length] to provide the length of CR (1), LF (1) or CRLF (2)
  */
-function indexOfNewline(string, offset = 0, includeLength = false) {
+export default function indexOfNewline(string, offset = 0, includeLength = false) {
   if (offset < 0) throw new Error("Unexpected negative offset");
   if (offset > string.length) throw new Error(`Offset is longer than the string. Offset: ${offset}. String: ${string.length}`);
 
@@ -20,6 +20,4 @@ function indexOfNewline(string, offset = 0, includeLength = false) {
 
   return includeLength ? [-1, 0] : -1;
 }
-
-export { indexOfNewline as default };
 //# sourceMappingURL=index.js.map

@@ -1,4 +1,9 @@
-'use strict';
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = indexOfNewline;
 
 /**
  * Find indexOf CR, LF, or CRLF
@@ -25,5 +30,5 @@ function indexOfNewline(string) {
   return includeLength ? [-1, 0] : -1;
 }
 
-module.exports = indexOfNewline;
+module.exports = exports.default;
 //# sourceMappingURL=index.js.map
