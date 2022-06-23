@@ -20,4 +20,4 @@ export default function indexOfNewline(string, offset = 0, includeLength = false
 
   return includeLength ? [-1, 0] : -1;
 }
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=index.mjs.map
