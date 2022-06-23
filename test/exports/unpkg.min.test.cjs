@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { assert } = require("chai");
+const assert = require("assert");
 const indexOfNewline = require("index-of-newline/dist/umd/index-of-newline.min.js");
 
 describe("exports index-of-newline/dist/umd/index-of-newline.min.js", function () {
