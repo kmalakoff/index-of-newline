@@ -19,7 +19,7 @@
     "format": "tsds format",
     "lint": "tsds lint",
     "test": "tsds test:node && tsds test:browser",
-    "version": "tsds version"
+    "version2": "tsds version"
   },
   "homepage": "https://github.com/kmalakoff/index-of-newline#README.md",
   "repository": {
@@ -39,7 +39,7 @@
     "typescript"
   ],
   "devDependencies": {
-    "ts-dev-stack": "^0.5.1"
+    "ts-dev-stack": "^0.6.5"
   },
   "engines": {
     "node": ">=0.8"
