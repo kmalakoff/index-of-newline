@@ -14,12 +14,11 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsds build:dist",
+    "build": "tsds build",
     "deploy": "tsds deploy",
     "format": "tsds format",
     "lint": "tsds lint",
     "test": "tsds test:node && tsds test:browser",
-    "test:engines": "tsds test:engines",
     "version": "tsds version"
   },
   "homepage": "https://github.com/kmalakoff/index-of-newline#README.md",
@@ -40,7 +39,7 @@
     "typescript"
   ],
   "devDependencies": {
-    "ts-dev-stack": "^0.3.3"
+    "ts-dev-stack": "^0.5.1"
   },
   "engines": {
     "node": ">=0.8"
@@ -53,7 +52,9 @@
     },
     "./*": "./*"
   },
-  "source": "src/index.ts",
+  "tsds": {
+    "source": "src/index.ts"
+  },
   "type": "module",
   "types": "dist/types/index.d.ts",
   "unpkg": "dist/umd/index-of-newline.js"
