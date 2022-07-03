@@ -38,4 +38,3 @@
   return indexOfNewline;
 
 }));
-//# sourceMappingURL=index-of-newline.js.map
