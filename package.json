@@ -1,34 +1,7 @@
 {
   "name": "index-of-newline",
-  "description": "Find indexOf CR, LF or CRLF",
   "version": "1.1.8",
-  "author": {
-    "email": "kmalakoff@gmail.com",
-    "name": "Kevin Malakoff",
-    "url": "https://github.com/kmalakoff"
-  },
-  "license": "MIT",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.mjs",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "tsds build",
-    "deploy": "tsds deploy",
-    "format": "tsds format",
-    "lint": "tsds lint",
-    "test": "tsds test:node && tsds test:browser",
-    "version2": "tsds version"
-  },
-  "homepage": "https://github.com/kmalakoff/index-of-newline#README.md",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/kmalakoff/index-of-newline.git"
-  },
-  "bugs": {
-    "url": "https://github.com/kmalakoff/index-of-newline/issues"
-  },
+  "description": "Find indexOf CR, LF or CRLF",
   "keywords": [
     "batch",
     "data",
@@ -38,12 +11,21 @@
     "parts",
     "typescript"
   ],
-  "devDependencies": {
-    "ts-dev-stack": "^0.6.5"
+  "homepage": "https://github.com/kmalakoff/index-of-newline#README.md",
+  "bugs": {
+    "url": "https://github.com/kmalakoff/index-of-newline/issues"
   },
-  "engines": {
-    "node": ">=0.8"
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kmalakoff/index-of-newline.git"
   },
+  "license": "MIT",
+  "author": {
+    "name": "Kevin Malakoff",
+    "email": "kmalakoff@gmail.com",
+    "url": "https://github.com/kmalakoff"
+  },
+  "type": "module",
   "exports": {
     ".": {
       "import": "./dist/esm/index.mjs",
@@ -52,10 +34,31 @@
     },
     "./*": "./*"
   },
+  "main": "dist/cjs/index.js",
+  "unpkg": "dist/umd/index-of-newline.js",
+  "module": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsds build",
+    "deploy": "tsds deploy",
+    "format": "tsds format",
+    "lint": "tsds lint",
+    "test": "tsds test:node && tsds test:browser",
+    "test:engines": "nvu engines tsds test:node && tsds test:browser",
+    "version": "tsds version"
+  },
+  "devDependencies": {
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^18.7.1",
+    "ts-dev-stack": "^0.8.7"
+  },
+  "engines": {
+    "node": ">=0.8"
+  },
   "tsds": {
     "source": "src/index.ts"
-  },
-  "type": "module",
-  "types": "dist/types/index.d.ts",
-  "unpkg": "dist/umd/index-of-newline.js"
+  }
 }
