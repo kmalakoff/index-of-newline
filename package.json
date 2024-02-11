@@ -1,49 +1,23 @@
 {
   "name": "index-of-newline",
-  "description": "Find indexOf CR, LF or CRLF",
   "version": "1.1.8",
-  "author": {
-    "email": "kmalakoff@gmail.com",
-    "name": "Kevin Malakoff",
-    "url": "https://github.com/kmalakoff"
-  },
-  "license": "MIT",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.mjs",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "tsds build",
-    "deploy": "tsds deploy",
-    "format": "tsds format",
-    "lint": "tsds lint",
-    "test": "tsds test:node && tsds test:browser",
-    "version2": "tsds version"
-  },
+  "description": "Find indexOf CR, LF or CRLF",
+  "keywords": ["batch", "data", "fetch", "form", "multipart", "parts", "typescript"],
   "homepage": "https://github.com/kmalakoff/index-of-newline#README.md",
+  "bugs": {
+    "url": "https://github.com/kmalakoff/index-of-newline/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/kmalakoff/index-of-newline.git"
   },
-  "bugs": {
-    "url": "https://github.com/kmalakoff/index-of-newline/issues"
+  "license": "MIT",
+  "author": {
+    "name": "Kevin Malakoff",
+    "email": "kmalakoff@gmail.com",
+    "url": "https://github.com/kmalakoff"
   },
-  "keywords": [
-    "batch",
-    "data",
-    "fetch",
-    "form",
-    "multipart",
-    "parts",
-    "typescript"
-  ],
-  "devDependencies": {
-    "ts-dev-stack": "^0.6.5"
-  },
-  "engines": {
-    "node": ">=0.8"
-  },
+  "type": "module",
   "exports": {
     ".": {
       "import": "./dist/esm/index.mjs",
@@ -52,10 +26,29 @@
     },
     "./*": "./*"
   },
+  "main": "dist/cjs/index.js",
+  "unpkg": "dist/umd/index-of-newline.js",
+  "module": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsds build",
+    "deploy": "tsds deploy",
+    "format": "biome check --apply src/ test/",
+    "test": "tsds test:node && tsds test:browser",
+    "test:engines": "nvu engines tsds test:node && tsds test:browser",
+    "version": "tsds version"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.5.3",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.17",
+    "ts-dev-stack": "^0.9.2"
+  },
+  "engines": {
+    "node": ">=0.8"
+  },
   "tsds": {
     "source": "src/index.ts"
-  },
-  "type": "module",
-  "types": "dist/types/index.d.ts",
-  "unpkg": "dist/umd/index-of-newline.js"
+  }
 }
