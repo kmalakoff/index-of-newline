@@ -14,7 +14,7 @@
             offset,
             1
         ] : offset;
-        else if (value === '\r') {
+        if (value === '\r') {
             return includeLength ? [
                 offset,
                 string[offset + 1] === '\n' ? 2 : 1
@@ -26,4 +26,4 @@
         -1,
         0
     ] : -1;
-};
+}
