@@ -1,0 +1,1 @@
+ignores: ["index-of-newline", "depcheck", "ts-dev-stack", "@types/*"]
