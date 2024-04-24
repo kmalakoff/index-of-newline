@@ -1,9 +1,10 @@
 import assert from 'assert';
+// @ts-ignore
 import indexOfNewline from 'index-of-newline';
 
-describe('index-of-newline', function () {
-  describe('no length', function () {
-    it('all values CRLF', function () {
+describe('index-of-newline', () => {
+  describe('no length', () => {
+    it('all values CRLF', () => {
       const string = 'some\r\nstring\ncombination\r';
 
       let index = indexOfNewline(string) as number;
@@ -16,7 +17,7 @@ describe('index-of-newline', function () {
       assert.equal(index, 24);
     });
 
-    it('all values LFCR', function () {
+    it('all values LFCR', () => {
       const string = 'some\n\rstring\ncombination\r';
 
       let index = indexOfNewline(string) as number;
@@ -32,27 +33,27 @@ describe('index-of-newline', function () {
       assert.equal(index, 24);
     });
 
-    it('none', function () {
+    it('none', () => {
       const index = indexOfNewline('somestringcombination');
       assert.equal(index, -1);
     });
 
-    it('none offset', function () {
+    it('none offset', () => {
       const index = indexOfNewline('somestringcombination', 10);
       assert.equal(index, -1);
     });
 
-    it('invalid negative offset', function () {
+    it('invalid negative offset', () => {
       assert.throws(() => indexOfNewline('some\r\nstring\ncombination\r', -1));
     });
 
-    it('invalid positive offset', function () {
+    it('invalid positive offset', () => {
       assert.throws(() => indexOfNewline('some\r\nstring\ncombination\r', 'some\r\nstring\ncombination\r'.length + 1));
     });
   });
 
-  describe('includeLength', function () {
-    it('all values CRLF', function () {
+  describe('includeLength', () => {
+    it('all values CRLF', () => {
       const string = 'some\r\nstring\ncombination\r';
 
       let [index, length] = indexOfNewline(string, 0, true) as number[];
@@ -65,7 +66,7 @@ describe('index-of-newline', function () {
       assert.equal(index, 24);
     });
 
-    it('all values LFCR', function () {
+    it('all values LFCR', () => {
       const string = 'some\n\rstring\ncombination\r';
 
       let [index, length] = indexOfNewline(string, 0, true) as number[];
@@ -81,21 +82,21 @@ describe('index-of-newline', function () {
       assert.equal(index, 24);
     });
 
-    it('none', function () {
+    it('none', () => {
       const string = 'somestringcombination';
       const [index, length] = indexOfNewline(string, 0, true) as number[];
       assert.equal(index, -1);
       assert.equal(length, 0);
     });
 
-    it('none offset', function () {
+    it('none offset', () => {
       const string = 'somestringcombination';
       const [index, length] = indexOfNewline(string, 10, true) as number[];
       assert.equal(index, -1);
       assert.equal(length, 0);
     });
 
-    it('iterate', function () {
+    it('iterate', () => {
       const string = 'some\r\nstring\ncombination\rwith\rnend';
 
       const results = [];
