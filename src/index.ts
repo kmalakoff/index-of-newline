@@ -13,7 +13,7 @@ export default function indexOfNewline(string: string, offset = 0, includeLength
   while (offset < string.length) {
     const value = string[offset];
     if (value === '\n') return includeLength ? [offset, 1] : offset;
-    else if (value === '\r') {
+    if (value === '\r') {
       return includeLength ? [offset, string[offset + 1] === '\n' ? 2 : 1] : offset;
     }
     offset++;
