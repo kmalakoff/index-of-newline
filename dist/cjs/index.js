@@ -1,22 +1,34 @@
-"use strict";
+/**
+ * Find indexOf CR, LF, or CRLF
+ *
+ * @param string The search string
+ * @param offset The offset for searching
+ * @param includeLength Include the length in the return value
+ * @returns When includeLength is true, returns a pair of [offset, length] to provide the length of CR (1), LF (1) or CRLF (2)
+ */ "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-module.exports = indexOfNewline;
+Object.defineProperty(exports, "default", {
+    enumerable: true,
+    get: function() {
+        return indexOfNewline;
+    }
+});
 function indexOfNewline(string) {
     var offset = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0, includeLength = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : false;
-    if (offset < 0) throw new Error("Unexpected negative offset");
+    if (offset < 0) throw new Error('Unexpected negative offset');
     if (offset > string.length) throw new Error("Offset is longer than the string. Offset: ".concat(offset, ". String: ").concat(string.length));
     while(offset < string.length){
         var value = string[offset];
-        if (value === "\n") return includeLength ? [
+        if (value === '\n') return includeLength ? [
             offset,
             1
         ] : offset;
-        else if (value === "\r") {
+        if (value === '\r') {
             return includeLength ? [
                 offset,
-                string[offset + 1] === "\n" ? 2 : 1
+                string[offset + 1] === '\n' ? 2 : 1
             ] : offset;
         }
         offset++;
@@ -26,3 +38,4 @@ function indexOfNewline(string) {
         0
     ] : -1;
 }
+/* CJS INTEROP */ if (exports.__esModule && exports.default) { try { Object.defineProperty(exports.default, '__esModule', { value: true }); for (var key in exports) { exports.default[key] = exports[key]; } } catch (_) {}; module.exports = exports.default; }
