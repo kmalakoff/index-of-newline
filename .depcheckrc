@@ -1,1 +1,1 @@
-ignores: ["index-of-newline", "@types/*", "@biomejs/*", "tsds-web-test-runner"]
+ignores: ["index-of-newline", "tsds-web-test-runner"]
