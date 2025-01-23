@@ -1,6 +1,6 @@
 {
   "name": "index-of-newline",
-  "version": "1.1.27",
+  "version": "1.1.28",
   "description": "Find indexOf CR, LF or CRLF",
   "keywords": [
     "batch",
