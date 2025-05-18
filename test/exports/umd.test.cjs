@@ -4,7 +4,7 @@ let umd = null;
 try {
   umd = require('index-of-newline/umd');
 } catch (_) {
-  umd = require('../../dist/umd/index.cjs');
+  umd = require('../../dist/umd/index-of-newline.cjs');
 }
 const indexOfNewline = typeof window !== 'undefined' ? window.indexOfNewline : umd.default || umd;
 
