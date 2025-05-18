@@ -29,15 +29,13 @@
   "exports": {
     ".": {
       "import": "./dist/esm/index.mjs",
-      "require": "./dist/cjs/index.cjs",
-      "types": "./dist/types/index.d.ts"
+      "require": "./dist/cjs/index.cjs"
     },
-    "./*": "./*"
+    "./package.json": "./package.json",
+    "./umd": "./dist/umd/index.cjs"
   },
   "main": "dist/cjs/index.cjs",
-  "unpkg": "dist/umd/index-of-newline.cjs",
-  "module": "dist/esm/index.mjs",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/cjs/index.d.cts",
   "files": [
     "dist"
   ],
@@ -46,7 +44,7 @@
     "deploy": "tsds deploy",
     "docs": "tsds docs",
     "format": "biome check --write --unsafe src/ test/",
-    "test": "tsds test:browser --config wtr.config.mjs && tsds test:node --no-timeouts",
+    "test": "tsds test:node --no-timeouts",
     "test:engines": "tsds test:browser --config wtr.config.mjs && nvu engines tsds test:node --no-timeouts",
     "version": "tsds version"
   },

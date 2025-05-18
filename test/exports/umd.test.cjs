@@ -1,7 +1,14 @@
 const assert = require('assert');
-const indexOfNewline = require('index-of-newline/dist/umd/index-of-newline.cjs');
 
-describe('exports index-of-newline/dist/umd/index-of-newline.cjs', () => {
+let umd = null;
+try {
+  umd = require('index-of-newline/umd');
+} catch (_) {
+  umd = require('../../dist/umd/index.cjs');
+}
+const indexOfNewline = typeof window !== 'undefined' ? window.indexOfNewline : umd.default || umd;
+
+describe('exports umd', () => {
   it('first newline', () => {
     const index = indexOfNewline('some\r\nstring\ncombination\r');
     assert.equal(index, 4);
