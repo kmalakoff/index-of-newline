@@ -1,5 +1,4 @@
 import assert from 'assert';
-// @ts-ignore
 import indexOfNewline from 'index-of-newline';
 
 const ANSI_1 = '\u001B[4mUnicorn\u001B[0m';
