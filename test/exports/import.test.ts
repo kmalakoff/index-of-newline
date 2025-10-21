@@ -1,5 +1,4 @@
 import assert from 'assert';
-// @ts-ignore
 import indexOfNewline from 'index-of-newline';
 
 describe('exports .ts', () => {
