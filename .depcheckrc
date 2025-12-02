@@ -1,1 +1,1 @@
-ignores: ["index-of-newline", "tsds-web-test-runner"]
+ignores: ["node-version-use", "ts-dev-stack", "@biomejs/biome", "index-of-newline", "tsds-web-test-runner"]
