@@ -35,6 +35,7 @@
     "./umd": "./dist/umd/index.cjs"
   },
   "main": "dist/cjs/index.js",
+  "source": "src/index.ts",
   "types": "dist/cjs/index.d.ts",
   "files": [
     "dist"
@@ -60,7 +61,6 @@
     "node": ">=0.8"
   },
   "tsds": {
-    "source": "src/index.ts",
     "targets": [
       "cjs",
       "esm",
