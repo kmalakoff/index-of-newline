@@ -1,1 +1,1 @@
-ignores: ["node-version-use", "ts-dev-stack", "index-of-newline", "tsds-web-test-runner"]
+ignores: ["index-of-newline", "node-version-use", "ts-dev-stack", "tsds-web-test-runner"]
