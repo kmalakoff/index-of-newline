@@ -2,6 +2,10 @@
 
 Find next line ending in CR, LF or CRLF
 
+```sh
+npm install index-of-newline
+```
+
 ### Example 1
 
 ```typescript
